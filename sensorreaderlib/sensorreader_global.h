@@ -1,0 +1,12 @@
+#ifndef SENSORREADER_GLOBAL_H
+#define SENSORREADER_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(SENSORREADER_LIBRARY)
+#  define SENSORREADER_EXPORT Q_DECL_EXPORT
+#else
+#  define SENSORREADER_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // SENSORREADER_GLOBAL_H
