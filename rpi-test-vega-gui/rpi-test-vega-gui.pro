@@ -10,10 +10,12 @@ INCLUDEPATH = ../../../sensorreaderlib/
 LIBS += -L$$DESTROOT_LIB -lsensorreaderlib
 
 SOURCES += \
+    databasemanager.cpp \
     main.cpp \
     sensordatamodel.cpp
 
 HEADERS += \
+    databasemanager.h \
     sensordatamodel.h
 
 FORMS +=
