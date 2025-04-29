@@ -11,11 +11,14 @@ LIBS += -L$$DESTROOT_LIB -lsensorreaderlib
 
 SOURCES += \
     databasemanager.cpp \
+    gozbisapiclient.cpp \
     main.cpp \
     sensordatamodel.cpp
 
 HEADERS += \
     databasemanager.h \
+    gozbis_definitions.h \
+    gozbisapiclient.h \
     sensordatamodel.h
 
 FORMS +=
