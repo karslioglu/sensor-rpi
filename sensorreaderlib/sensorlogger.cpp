@@ -1,4 +1,5 @@
 #include "sensorlogger.h"
+#include <QDebug>
 
 static int currentToDistance_mm(float current_mA) {
     if (current_mA < 4.0f) current_mA = 4.0f;

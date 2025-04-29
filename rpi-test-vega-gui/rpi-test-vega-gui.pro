@@ -1,4 +1,4 @@
-QT       += core gui widgets quick
+QT       += core gui widgets quick sql
 
 CONFIG += c++17 qt quick qml release
 

@@ -2,12 +2,29 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QThread>
+#include <QDir>
+#include <QDebug>
+#include <QCursor>
 #include "sensorlogger.h"
 #include "sensordatamodel.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    // Mouse İmlecini Gizle
+    QGuiApplication::setOverrideCursor(Qt::BlankCursor);
+
+    // Hidrolink veritabanı dizini kontrolü
+    QString dbDir = "/var/lib/hidrolink";
+    QDir dir(dbDir);
+    if (!dir.exists()) {
+        if (dir.mkpath(".")) {
+            qInfo() << "Created directory:" << dbDir;
+        } else {
+            qCritical() << "Failed to create directory:" << dbDir;
+        }
+    }
 
     SensorDataModel dataModel;
 
@@ -33,6 +50,11 @@ int main(int argc, char *argv[])
 
     if (engine.rootObjects().isEmpty())
         return -1;
+
+    // Mouse İmlecini Uygulama Kapanırken Geri Getir
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, []() {
+        QGuiApplication::restoreOverrideCursor();
+    });
 
     return app.exec();
 }
